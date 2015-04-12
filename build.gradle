@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.0.0'
+
+mainClassName = 'example.Example'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'OkHttp Example', 'Implementation-Version': version
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.squareup.okhttp:okhttp:2.3.0'
+    compile 'org.mock-server:mockserver-netty:3.9.6'
+}
